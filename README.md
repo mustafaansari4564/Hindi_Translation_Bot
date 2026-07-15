@@ -1,73 +1,145 @@
-# 🇮🇳 Hindi Translation Bot
+# 🤖 Hindi Translation Discord Bot
 
-A Discord bot that translates **Hindi (Devanagari)** text and images to **English** and **Urdu**, powered by OpenRouter's free AI vision & language models.
-
----
-
-## ⚡ Commands
-
-| Command | Aliases | Description |
-|---------|---------|-------------|
-| `!he <hindi text>` | `!e`, `!en`, `!english` | Translate Hindi → **English** |
-| `!hu <hindi text>` | `!u`, `!ur`, `!urdu` | Translate Hindi → **Urdu** |
-| `!translate <hindi text>` | `!t`, `!tr`, `!both` | Translate Hindi → **Both** |
-| `!guide` | `!h`, `!commands` | Show full command guide |
-| `!ping` | — | Check bot latency |
-
-### 🖼️ Image Translation
-Attach a Hindi image and use any command above:
-- Attach image + `!he` → English
-- Attach image + `!hu` → Urdu
-- Attach image + `!translate` → Both
+A Discord bot that **translates Hindi text and images** to English using AI. Built with `chrome-lens-py` OCR and OpenRouter.
 
 ---
 
-## 🛠️ Setup
+## ✨ Features
 
-### 1. Clone & install dependencies
+- 📝 **Text Translation** — Paste any Hindi text and get an instant English translation
+- 🖼️ **Image Translation** — Send an image containing Hindi text and the bot extracts and translates it automatically
+- ⚡ **Fast & Reliable** — Powered by OpenRouter for translation and `chrome-lens-py` for OCR
+- 🆓 **Completely Free** — Uses free tiers of all APIs
+
+---
+
+## 🚀 Commands
+
+| Command | Description |
+|---|---|
+| `!he <hindi>` |  Translate Hindi text to English |
+| `!he` + image |  Extract & translate Hindi from image |
+| `!hu <hindi>` |  Translate Hindi text to Urdu |
+| `!hu` + image |  Extract & translate Hindi from image |
+| `!guide` |  Show full command guide |
+| `!ping` |  Check bot status & latency |
+
+---
+
+## 🛠️ Tech Stack
+
+| Service | Purpose |
+|---|---|
+| [discord.py](https://discordpy.readthedocs.io/) | Discord bot framework |
+| `chrome-lens-py` (v3+) | Hindi OCR from images |
+| [OpenRouter](https://openrouter.ai/) | Hindi → English translation |
+| [python-dotenv](https://pypi.org/project/python-dotenv/) | Environment variable management |
+
+---
+
+## 📋 Prerequisites
+
+- Python 3.11+
+- Discord Bot Token
+- OpenRouter API Key (free at [openrouter.ai](https://openrouter.ai))
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+cd YOUR_REPO_NAME
+```
+
+### 2. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Configure environment variables
-Copy `.env.example` to `.env` and fill in your values:
-```bash
-cp .env.example .env
+### 3. Create `.env` file
+```env
+DISCORD_TOKEN=your_discord_bot_token_here
+OPENROUTER_API_KEY=your_openrouter_api_key_here
 ```
 
-Required values:
-- `DISCORD_TOKEN` — Your Discord bot token
-- `OPENROUTER_API_KEY` — Your OpenRouter API key (get one free at https://openrouter.ai)
-
-### 3. Run the bot
+### 4. Run the bot
 ```bash
 python bot.py
 ```
 
----
+## 📁 Project Structure
 
-## 🖥️ Render / Railway Deployment
-
-Use `build.sh` as the build command — it installs Tesseract for Hindi OCR:
-```bash
-bash build.sh
+```
+hindi-translation-bot/
+├── bot.py              # Main bot code
+├── requirements.txt    # Python dependencies
+├── .env                # Environment variables (never commit this!)
+├── .gitignore          # Git ignore file
+└── README.md           # This file
 ```
 
 ---
 
-## 🔒 Access Control (Optional)
+## 🔑 Getting API Keys
 
-Set these in your `.env` to restrict who can use the bot:
+### Discord Bot Token
+1. Go to [discord.com/developers/applications](https://discord.com/developers/applications)
+2. Create new application → Bot → Reset Token
+3. Enable **Message Content Intent**
 
-| Variable | Description |
-|----------|-------------|
-| `ALLOWED_SERVERS` | Comma-separated Discord server IDs (leave blank = all servers) |
-| `COUNCIL_ROLE_ID` | Role ID with full bot access |
-| `LIBRARY_ROLE_ID` | Role ID with forum-only access |
-| `FORUM_CHANNEL_ID` | Forum channel ID for Library Pass holders |
+### OpenRouter API Key (Free)
+1. Go to [openrouter.ai](https://openrouter.ai)
+2. Sign up → Keys → Create Key
+- Uses free-tier models by default
 
 ---
 
-## 🤖 Powered By
-- [OpenRouter](https://openrouter.ai) — Free AI models for OCR & translation
-- [discord.py](https://discordpy.readthedocs.io) — Discord bot framework
+## 🤝 Invite Bot to Your Server
+
+Generate an invite link:
+1. Go to [discord.com/developers/applications](https://discord.com/developers/applications)
+2. OAuth2 → URL Generator
+3. Select `bot` scope
+4. Select permissions: `Read Messages`, `Send Messages`, `Add Reactions`, `Read Message History`
+5. Copy and share the generated URL
+
+---
+
+## 📝 Example Usage
+
+**Text Translation:**
+```
+User: !he नमस्ते आप कैसे हैं
+Bot:
+📝 Original Hindi: नमस्ते आप कैसे हैं
+🇬🇧 English: Hello, how are you
+```
+
+**Image Translation:**
+```
+User: [attaches image with Hindi text] !he
+Bot:
+📝 Extracted Hindi: [extracted text]
+🇬🇧 English: [english translation]
+```
+
+---
+
+## ⚠️ Important Notes
+
+- Bot only responds to `!` commands — it does NOT auto-translate every message
+
+
+---
+
+## Contributing
+
+Contributions, feature requests, and bug reports are welcome.
+
+Feel free to fork the repository and submit a pull request.
+
+---
+
+⭐ If this project helped you, consider giving it a star on GitHub!
